@@ -17,7 +17,6 @@
     <title>Trabajo Grupal</title>
   </head>
   <body>
-    <h1>hola</h1>
     <header id="home">
       <nav class="nav">
         <a href="#" class="nav__logo">
@@ -88,22 +87,24 @@
       </section>
       <section class="categories">
         <!-- Aca las categorias, donde aparentemente solo vamos a mostrar las pizzas -->
-        <div class="categories__card">
-          <img src="./assets/img/image 34.png" alt="pizza" class="img__card" />
-          <span>Pizzas</span>
-          <hr class="card__hr" />
+        <div class="categories__card1" data-id="pizzas">
+          <!-- <img src="./assets/img/image 34.png" alt="pizza" class="img__card" data-id="pizzas"/> -->
+          <span data-id="pizzas">Pizzas</span>
+          <hr class="card__hr" data-id="pizzas" />
         </div>
-        <div class="categories__card">
-          <img src="./assets/img/burger 1.png" alt="pizza" class="img__card" />
-          <span>Burgas</span>
-          <hr class="card__hr" />
+        <div class="categories__card2" data-id="hamburguesas" >
+          <img src="./assets/img/burger 1.png" alt="pizza" class="img__card" data-id="hamburguesas"/>
+          <span data-id="hamburguesas">Burgas</span>
+          <hr class="card__hr" data-id="hamburguesas" />
         </div>
-        <div class="categories__card">
-          <img src="./assets/img/fries 2.png" alt="pizza" class="img__card" />
-          <span>Papas</span>
-          <hr class="card__hr" />
+        <div class="categories__card3" data-id="papas">
+            <img src="./assets/img/fries 2.png" alt="pizza" class="img__card" data-id="papas"/>
+            <span data-id="papas">Papas</span>
+            <hr class="card__hr" data-id="papas" />
         </div>
       </section>
+      <ul class="mostrarProdCategorias"></ul>
+
       <section class="popular">
         <!-- aca ni idea -->
       </section>

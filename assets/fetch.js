@@ -7,7 +7,7 @@ const requestAPI = async (categoria) => {
 
     const json = await resultado.json();
 
-    // console.log(json);
+  
 
     return json;
   } catch (error) {
@@ -15,4 +15,4 @@ const requestAPI = async (categoria) => {
   }
 };
 
-// requestAPI("pizza");
+
