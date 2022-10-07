@@ -190,7 +190,7 @@ main {
   color: var(--white);
 }
 
-.categories__card img :nth-child(1) {
+.categories__card img:first-child {
   width: 71px;
   height: 71px;
 }
@@ -204,6 +204,7 @@ main {
   width: 24px;
   height: 4px;
   background: var(--gradient);
+  border-radius: 5px;
 }
 
 /* Footer */
