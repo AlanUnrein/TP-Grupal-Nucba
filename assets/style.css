@@ -171,6 +171,14 @@ main {
   align-items: center;
   gap: 10px;
 }
+.categoria_h1{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 0 50px;
+  color: white;
+}
 
 .categories__card1,.categories__card2, .categories__card3 {
   display: flex;
@@ -205,6 +213,88 @@ main {
   width: 24px;
   height: 4px;
   background: var(--gradient);
+}
+
+/* Categoria de populares */
+.popular{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 25px;
+}
+
+.popular_card{
+  background-color: #252525;
+  width: 282px;
+  height: 213px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.img_cardPopular{
+  width: 237px;
+  height: 97px;
+  border-radius: 16px;
+}
+.text_cardPopular{
+width: 55%;
+}
+.container_button_popularCard{
+  width: 45%;
+  margin-top: 55px;
+  text-align: right;
+}
+.title_popularCard{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  color: white;
+  margin-bottom: 5px;
+}
+.subtitle_popularCard{
+  font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 17px;
+letter-spacing: 0.5px;
+color: #FFFFFF;
+mix-blend-mode: normal;
+opacity: 0.3;
+margin-bottom: 5px;
+}
+
+.prize_popularCard{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 131.02%;
+  background: linear-gradient(98.81deg, #FFA100 -0.82%, #FF005C 101.53%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.button_popularCard{
+  width: 85px;
+  height: 29px;
+  background: linear-gradient(98.81deg, #FFA100 -0.82%, #FF005C 101.53%);
+  border-radius: 17.5px;
+  font-size: 12px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  color: white;
+  border: none;
 }
 
 /* Footer */
