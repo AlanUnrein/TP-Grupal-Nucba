@@ -171,6 +171,14 @@ main {
   align-items: center;
   gap: 10px;
 }
+.categoria_h1{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 0 50px;
+  color: white;
+}
 
 .categories__card {
   display: flex;
