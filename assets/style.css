@@ -196,6 +196,7 @@ main {
 
   font-size: 15px;
   color: var(--white);
+  cursor: pointer;
 }
 
 
@@ -214,6 +215,7 @@ main {
   height: 4px;
   background: var(--gradient);
 }
+
 
 /* Categoria de populares */
 .popular{
@@ -295,7 +297,73 @@ background-clip: text;
   font-weight: 600;
   color: white;
   border: none;
+  cursor: pointer;
 }
+
+
+
+/* Mostrar producto de categorias */
+.mostrarProdCategorias{
+  margin: 5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  
+}
+.categoria__productos__img{
+  width: 300px;
+  height: 220px;
+  border-radius: 2rem;
+}
+.categoria__productos__nombre{
+  color: white;
+}
+.categoria__productos{
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 15px 0;
+  margin: 15px;
+
+
+  background-color: #252525;
+  border-radius: 15px;
+}
+.categoria__productos__ingredientes{
+  width: 90%;
+  text-align: center;
+  color: white;
+  opacity: 0.3;
+  font-size: 21px;
+  font-family: Montserrat;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+.categoria__productos__precio{
+  background: linear-gradient(98.81deg, #FFA100 -0.82%, #FF005C 101.53%);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Footer */
 footer {
