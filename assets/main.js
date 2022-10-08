@@ -1,6 +1,4 @@
-const categories_card1= document.querySelector('.categories__card1')
-const categories_card2= document.querySelector('.categories__card2')
-const categories_card3= document.querySelector('.categories__card3')
+const categories_card= document.getElementsByClassName('categories__card')
 const mostrarProdCategorias = document.querySelector('.mostrarProdCategorias')
 
 
@@ -20,7 +18,7 @@ const renderCardsCategorias = categorias => {
     mostrarProdCategorias.innerHTML = categorias.map(categoria => createCardsCategorias(categoria));
 }
 const mostrarCategorias= async (e)=> {
-     if(!e.target.classList.contains('categories_card1') || !e.target.classList.contains('categories_card2') || !e.target.classList.contains('categories_card3')){
+     if(!e.target.classList.contains('categories_card')){
         const valueCategoria = e.target.dataset.id;
         const arrayCategorias = await requestAPI(valueCategoria)
         renderCardsCategorias(arrayCategorias)
@@ -39,9 +37,10 @@ const saveLocalStorage = async () => {
 
 const init = () => {
   saveLocalStorage();
-  categories_card1.addEventListener('click', mostrarCategorias)
-  categories_card2.addEventListener('click', mostrarCategorias)
-  categories_card3.addEventListener('click', mostrarCategorias)
+  for (let i = 0; i < categories_card.length; i++) {
+    categories_card[i].addEventListener('click', mostrarCategorias)
+  }
+
 };
 
 init();
