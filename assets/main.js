@@ -38,8 +38,8 @@ const saveLocalStorage = async () => {
 const init = () => {
   saveLocalStorage();
   for (let i = 0; i < categories_card.length; i++) {
-    categories_card[i].addEventListener('click', mostrarCategorias)
-  }
+    categories_card[i].addEventListener('click', mostrarCategorias)   
+}
 
 };
 
