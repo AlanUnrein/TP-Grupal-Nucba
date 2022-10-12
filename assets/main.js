@@ -9,7 +9,7 @@ const createCardsCategorias = categorias=>{
             <img src="${imagenes}" alt="" class="categoria__productos__img">
             <h3 class="categoria__productos__nombre">${nombre}</h3>
             <h2 class="categoria__productos__ingredientes">Ingredientes: ${ingredientes.join(', ')}.</h2>
-            <h3 class="categoria__productos__precio">$${precio}</h3>
+            <p class="categoria__productos__precio">$${precio}</p>
         </li>
     `
 }
