@@ -5,14 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="./assets/img/logo.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css"/>
     <link rel="stylesheet" href="./assets/style.css" />
     <title>Trabajo Grupal</title>
   </head>
@@ -30,9 +24,8 @@
               </a>
             </li>
             <li class="nav__li">
-              <a href="#" class="nav__link shop">
-                <i class="fa-solid fa-cart-shopping"></i>
-              </a>
+                <i id="cart" class="fa-solid fa-cart-shopping"></i>
+                <span id="quantity" class="hidden"></span> <!-- Cantidad de elementos en el cart -->
             </li>
             <li class="nav__li">
               <a href="#" class="nav__link user">
@@ -40,8 +33,9 @@
               </a>
             </li>
           </ul>
-        </div>
+        </div>  
       </nav>
+      <div class="cart--container"></div>
       <div class="header__container">
         <div class="header__container-text">
           <h1 class="header__h1">Si tenes Zappi, <span>tenes Nucba.</span></h1>
@@ -64,7 +58,7 @@
             <p class="recommend__card-p">Descipcion</p>
             <span class="recommend__card-span prices">precio</span>
           </div>
-          <button id="addCart" class="recommend__button">Agregar</button>
+          <button class="addButton">Agregar</button>
         </div>
         <div class="recommend__card">
           <img src="./assets/img/pizza.png" alt="pizza" />
@@ -73,7 +67,7 @@
             <p class="recommend__card-p">Descipcion</p>
             <span class="recommend__card-span prices">precio</span>
           </div>
-          <button id="addCart" class="recommend__button">Agregar</button>
+          <button class="addButton">Agregar</button>
         </div>
         <div class="recommend__card">
           <img src="./assets/img/pizza.png" alt="pizza" />
@@ -82,10 +76,11 @@
             <p class="recommend__card-p">Descipcion</p>
             <span class="recommend__card-span prices">precio</span>
           </div>
-          <button id="addCart" class="recommend__button">Agregar</button>
+          <button class="addButton">Agregar</button>
         </div>
       </section>
-      <p class="categoria_h1">Categorías</p>
+
+      <h2 class="categories_h2">Categorías</h2>
       <section class="categories">
         <!-- Aca las categorias, donde aparentemente solo vamos a mostrar las pizzas -->
         <div class="categories__card" data-id="pizzas">
@@ -106,10 +101,9 @@
       </section>
       <ul class="mostrarProdCategorias"></ul>
 
-
       <h2 class="recommend__h2">Los más populares</h2>
       <!-- Section de categoria popular -->
-      <section class="popular">
+      <!-- <section class="popular">
         <div class="popular_card">
           <img class="img_cardPopular"  src="/assets/img/Photo Menu.png" alt="foto de pizza">
           <div class="text_cardPopular">
@@ -205,7 +199,7 @@
             <button class="button_popularCard">Agregar</button>
           </div>
         </div>
-      </section>
+      </section> -->
     </main>
     <footer>
       <ul class="footer__list">
