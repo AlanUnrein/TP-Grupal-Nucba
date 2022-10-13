@@ -1,5 +1,7 @@
 const categories_card= document.getElementsByClassName('categories__card')
 const mostrarProdCategorias = document.querySelector('.mostrarProdCategorias')
+const arrowCategorias = document.getElementById('arrowCategorias')
+
 
 
 const createCardsCategorias = categorias=>{
@@ -10,10 +12,16 @@ const createCardsCategorias = categorias=>{
             <h3 class="categoria__productos__nombre">${nombre}</h3>
             <h2 lang="es" class="categoria__productos__ingredientes">Ingredientes: ${ingredientes.join(', ')}.</h2>
             <h3 class="categoria__productos__precio">$${precio}</h3>
-        </li>
+        </li> 
     `
 }
 
+
+const hiddenCategorias = () =>{ 
+     const productos = document.querySelectorAll('.categoria__productos')
+     productos.forEach(producto => producto.style.display = 'none' )
+     arrowCategorias.style.display = 'none';
+}
 const renderCardsCategorias = categorias => {
     mostrarProdCategorias.innerHTML = categorias.map(categoria => createCardsCategorias(categoria));
 }
@@ -22,17 +30,17 @@ const mostrarCategorias= async (e)=> {
         const valueCategoria = e.target.dataset.id;
         const arrayCategorias = await requestAPI(valueCategoria)
         renderCardsCategorias(arrayCategorias)
+        arrowCategorias.style.display = 'flex';
         return;
     }
 }
+
 
 
 const saveLocalStorage = async () => {
   const menu = await requestAPI();
   localStorage.setItem("categorias", JSON.stringify(menu));
 }
-
-
 
 
 const init = () => {
