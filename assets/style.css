@@ -16,6 +16,8 @@
   box-sizing: border-box;
   font-family: var(--font);
   scroll-behavior: smooth;
+  text-decoration: none;
+  list-style: none;
 }
 a {
   text-decoration: none;
@@ -203,6 +205,16 @@ main {
 .categories__card:focus{
   box-shadow: 0px 0px 10px 0px var(--white);
 }
+
+.categoriaVacia{
+  background-color: var(--black);
+  color: white;
+  
+  border-radius: 15px;
+  padding:20px;
+}
+
+ 
 
 .categories__card img :nth-child(1) {
   width: 71px;
@@ -402,3 +414,4 @@ footer {
 .footer__p span {
   font-weight: 700;
 }
+
