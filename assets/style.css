@@ -15,6 +15,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: var(--font);
+  scroll-behavior: smooth;
 }
 a {
   text-decoration: none;
@@ -345,33 +346,27 @@ background-clip: text;
 }
 .categoria__productos__precio{
   background: linear-gradient(98.81deg, #FFA100 -0.82%, #FF005C 101.53%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  width: 85px;
-  height: 29px;
-  border-radius: 17.5px;
-  font-size: 20px;
-  align-items: center;
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
+
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+/* FLECHA OCULTAR CATEGORIAS */
+#arrowCategorias{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+.fa-solid.fa-chevron-up{
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+.fa-solid.fa-chevron-up:hover{
+  transform: scale(1.2, 1.2);
+}
 
 
 
