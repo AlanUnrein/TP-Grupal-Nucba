@@ -301,35 +301,41 @@ main {
 
 /* Cards recomendadas, renderizadas en el html  */
 .recommend__card {
+  position: relative;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
-
   border-radius: 15px;
   box-shadow: var(--boxShadow);
   background-color: var(--black);
   width: 350px;
-  height: 100px;
-
+  height: 110px;
+  padding: 15px;
   color: var(--white);
 }
 .recommend__card--text {
   display: flex;
   flex-direction: column;
   gap: 5px;
-}
+  height: 100%;
+} 
 .recommend__card--h2 {
-  font-size: 15px;
+  font-size: 14px;
 }
 .recommend__card--p {
-  font-size: 10px;
+  font-size: 9px;
 }
 .recommend__card img {
   width: 70px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 .recommend__card-span {
   font-size: 17px;
+  position: absolute;
+  bottom: 15px;
 }
 .prices {
   font-weight: 700;

@@ -1,5 +1,9 @@
-const categories_card= document.getElementsByClassName('categories__card')
-const mostrarProdCategorias = document.querySelector('.mostrarProdCategorias')
+const categories_card= document.getElementsByClassName('categories__card');
+const mostrarProdCategorias = document.querySelector('.mostrarProdCategorias');
+const recommend = document.querySelector('.recommend');
+
+
+
 
 
 const createCardsCategorias = categorias=>{
@@ -36,12 +40,33 @@ const saveLocalStorage = async () => {
 }
 
 
-const init = () => {
-  saveLocalStorage();
-  for (let i = 0; i < categories_card.length; i++) {
-    categories_card[i].addEventListener('click', mostrarCategorias)   
+/* Funcion para renderizar la seccion de recomendados (tres elementos traidos aleatoriamente del array original) */
+const recommendHTML =  (food) => {
+    return `
+        <div class="recommend__card data-category="${food.categoria}" data-id="${food.id}"">
+          <img src=${food.imagenes} alt="pizza" />
+          <div class="recommend__card--text">
+            <h2 class="recommend__card--h2">${food.nombre}</h2>
+            <p class="recommend__card--p">${food.ingredientes.join(' - ')}</p>
+            <span class="recommend__card-span prices">$${food.precio}</span>
+          </div>
+          <button class="addButton">Agregar</button>
+        </div>`
+}
+const renderRecommend = async () => {
+    const fetchedFood = await requestProducts();
+
+    recommend.innerHTML = fetchedFood.map(food => recommendHTML(food)).join('')
 }
 
+
+const init = () => {
+    renderRecommend();
+    saveLocalStorage();
+    for (let i = 0; i < categories_card.length; i++) {
+    categories_card[i].addEventListener('click', mostrarCategorias)   
+}
 };
+
 
 init();

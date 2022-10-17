@@ -11,3 +11,11 @@ const requestAPI = async (categoria) => {
   }
 };
 
+const requestProducts = async () => {
+  const res = await fetch(baseURL);
+  const data = await res.json();
+  return data.flat();
+}
+
+
+
