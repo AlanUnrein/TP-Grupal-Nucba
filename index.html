@@ -5,15 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="./assets/img/logo.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css"/>
     <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="./assets/mediaQueries.css" />
     <title>Trabajo Grupal</title>
   </head>
   <body>
@@ -30,9 +25,8 @@
               </a>
             </li>
             <li class="nav__li">
-              <a href="#" class="nav__link shop">
-                <i class="fa-solid fa-cart-shopping"></i>
-              </a>
+                <i id="cart" class="fa-solid fa-cart-shopping"></i>
+                <span id="quantity" class="hidden"></span> <!-- Cantidad de elementos en el cart -->
             </li>
             <li class="nav__li">
               <a href="#" class="nav__link user">
@@ -40,8 +34,54 @@
               </a>
             </li>
           </ul>
-        </div>
+        </div> 
       </nav>
+      <!-- Menu del carrito de compras --> 
+      <div class="cart__container hidden">  
+        <div class="cart__button">x</div>
+        <h2 class="cart__h2">Tus Productos</h2>
+        <ul class="cart__ul"> <!-- Aca la lista de elementos en el cart -->
+
+          <li class="cart__li">
+            <div class="cart__item">
+              <img class="cart__item--img" src="./assets/img/pizza.png" alt="pizza" />
+              <div class="cart__item--text">
+                <h3 class="cart__item--h3">Nombre</h3>
+                <p class="cart__item--p">Descipcion</p>
+                <span class="cart__item--span prices">precio</span>
+              </div>
+              <div class="count">
+                <div class="count__less cart__button">-</div>
+                <div class="count__counting">5</div> <!-- Cantidad actual de ese item -->
+                <div class="count__more cart__button">+</div>
+              </div>
+          </li>
+          <li class="cart__li">
+            <div class="cart__item">
+              <img class="cart__item--img" src="./assets/img/pizza.png" alt="pizza" />
+              <div class="cart__item--text">
+                <h3 class="cart__item--h3">Nombre</h3>
+                <p class="cart__item--p">Descipcion</p>
+                <span class="cart__item--span prices">precio</span>
+              </div>
+              <div class="count">
+                <div class="count__less cart__button">-</div>
+                <div class="count__counting">5</div> 
+                <div class="count__more cart__button">+</div>
+              </div>
+          </li>
+
+        </ul>
+        <div class="cart__values">
+          <h4 class="cart__subtotal">Subtotal: <span>$4523</span><!-- aca el precio subtotal --></h4>
+          <h4 class="cart__envio">Envio: <span>Gratis</span></h4>
+          <h4 class="cart__total">Total: <span>$4523</span></h4>
+        </div>
+        <button class="cart__shop">COMPRAR</button>
+        <p class="cart__p"><a href="#">Ver mas productos</a></p>
+        </div>
+
+      </div>
       <div class="header__container">
         <div class="header__container-text">
           <h1 class="header__h1">Si tenes Zappi, <span>tenes Nucba.</span></h1>
@@ -57,35 +97,39 @@
       <h2 class="recommend__h2">Hoy te recomendamos...</h2>
       <section class="recommend">
         <!-- Aca podemos poner una lista de x cantidad, aleatorios -->
-        <div class="recommend__card">
+
+        <!-- <div class="recommend__card">
           <img src="./assets/img/pizza.png" alt="pizza" />
-          <div class="recommend__card-text">
-            <h2 class="recommend__card-h2">Nombre</h2>
-            <p class="recommend__card-p">Descipcion</p>
+          <div class="recommend__card--text">
+            <h2 class="recommend__card--h2">Nombre</h2>
+            <p class="recommend__card--p">Descipcion</p>
             <span class="recommend__card-span prices">precio</span>
           </div>
-          <button id="addCart" class="recommend__button">Agregar</button>
+          <button class="addButton">Agregar</button>
         </div>
+
         <div class="recommend__card">
           <img src="./assets/img/pizza.png" alt="pizza" />
-          <div class="recommend__card-text">
-            <h2 class="recommend__card-h2">Nombre</h2>
-            <p class="recommend__card-p">Descipcion</p>
+          <div class="recommend__card--text">
+            <h2 class="recommend__card--h2">Nombre</h2>
+            <p class="recommend__card--p">Descipcion</p>
             <span class="recommend__card-span prices">precio</span>
           </div>
-          <button id="addCart" class="recommend__button">Agregar</button>
+          <button class="addButton">Agregar</button>
         </div>
+
         <div class="recommend__card">
           <img src="./assets/img/pizza.png" alt="pizza" />
-          <div class="recommend__card-text">
-            <h2 class="recommend__card-h2">Nombre</h2>
-            <p class="recommend__card-p">Descipcion</p>
+          <div class="recommend__card--text">
+            <h2 class="recommend__card--h2">Nombre</h2>
+            <p class="recommend__card--p">Descipcion</p>
             <span class="recommend__card-span prices">precio</span>
           </div>
-          <button id="addCart" class="recommend__button">Agregar</button>
-        </div>
+          <button class="addButton">Agregar</button>
+        </div> -->
+        
       </section>
-      <p class="categoria_h1">Categorías</p>
+      <h2 class="categories_h2">Categorías</h2>
       <section class="categories">
         <!-- Aca las categorias, donde aparentemente solo vamos a mostrar las pizzas -->
         <div class="categories__card vacia" tabindex="1">
@@ -127,10 +171,9 @@
       <ul class="mostrarProdCategorias"></ul>
       <span id="arrowCategorias"><i class="fa-solid fa-chevron-up" onclick='hiddenCategorias()'></i></span>
 
-
       <h2 class="recommend__h2">Los más populares</h2>
       <!-- Section de categoria popular -->
-      <section class="popular">
+      <!-- <section class="popular">
         <div class="popular_card">
           <img class="img_cardPopular"  src="/assets/img/Photo Menu.png" alt="foto de pizza">
           <div class="text_cardPopular">
@@ -226,7 +269,7 @@
             <button class="button_popularCard">Agregar</button>
           </div>
         </div>
-      </section>
+      </section> -->
     </main>
     <footer>
       <ul class="footer__list">

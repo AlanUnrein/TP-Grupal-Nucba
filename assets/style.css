@@ -18,15 +18,19 @@
   scroll-behavior: smooth;
   text-decoration: none;
   list-style: none;
+  font-weight: 500;
 }
 a {
   text-decoration: none;
+  color: var(--white);
 }
 
 body {
+  position: relative;
   background-color: var(--background);
 }
 .nav {
+  position: relative;
   height: 120px;
   display: flex;
   justify-content: space-between;
@@ -39,24 +43,205 @@ body {
   width: 100px;
 }
 .nav__ul {
-  margin-right: 100px;
+  margin-right: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 80px;
   list-style: none;
 }
+.nav__li {
+  position: relative;
+}
 .nav__link {
   font-size: 20px;
   color: var(--yellow);
 }
+
+
+/* Menu de cart shop */
+
+.cart__container {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  backdrop-filter: blur(8px);
+  background-color: #252525cb;
+  width: 400px;
+  border-radius: 15px;
+  border: 1px solid var(--background) ;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 35px;
+}
+.cart__h2 {
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 500;
+  text-align: left;
+}
+.cart__ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.cart__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 350px;
+  height: 100px;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: var(--boxShadow);
+  background-color: var(--black);
+
+}  
+/* Estilos de botones del cart menu */
+  .cart__button {
+    background: var(--gradient);
+    box-shadow: var(--boxShadow);
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    color: var(--white);
+    display: grid;
+    place-items: center;
+    height: 25px;
+    width: 25px;
+  }
+  .cart__button:hover {
+    box-shadow: 0px 0px 10px 0px var(--white);
+    cursor: pointer;
+  }
+
+.cart__item--text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: var(--white);
+}
+.cart__item--h3 {
+  font-size: 15px;
+}
+.cart__item--p {
+  font-size: 11px;
+  font-weight: 100;
+}
+
+/* botones de cantidad */
+  .count {
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+  }
+  .count__counting {
+    font-weight: 300;
+    color: var(--white);
+  }
+  .count__less {
+    background: #2f1e01;
+  background: linear-gradient(95deg,#5f3c00 1%, #633f01 1%, #4d001d 98%);
+  }  
+
+.cart__item--img {
+  width: 70px;
+  object-fit: cover;
+}
+/* box del subtotal y total */
+  .cart__values {
+    margin-top: 50px;
+    color: var(--white);
+    font-size: 12px;
+    letter-spacing: 1px;
+    position: relative;
+    width: 100%;
+  }
+  .cart__subtotal {
+    font-weight: 300;
+  }
+  .cart__subtotal span{
+    position: absolute;
+    right: 0;
+  }
+  .cart__envio {
+    font-weight: 300;
+  }
+  .cart__envio span {
+    position: absolute;
+    right: 0;
+  }
+  .cart__total {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--white);
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .cart__total span {
+    position: absolute;
+    right: 0;
+    color: var(--yellow);
+  }
+  .cart__shop {
+    background: var(--gradient);
+    box-shadow: var(--boxShadow);
+    border: none;
+    color: var(--white);
+    font-weight: 700;
+    margin: 0 auto;
+    width: 250px;
+    height: 45px;
+    border-radius: 15px;
+  }  
+  .cart__shop:hover {
+      box-shadow: 0px 0px 10px 0px var(--white);
+      cursor: pointer;
+    }
+  .cart__p {
+  text-align: center;
+  font-size: 10px;
+  margin-top: -25px;
+  margin-bottom: 20px;
+}
+.cart__p a {
+  font-weight: 100;
+}
+
+
+#cart {
+  font-size: 20px;
+  color: var(--yellow);
+}
+#quantity {
+  position: absolute;
+  color: var(--white);
+  top: -10px;
+  font-size: 13px;
+  background-color: var(--red);
+  border: 1px solid var(--white);
+  
+  padding: 0 3px;
+  border-radius: 50%;
+  text-align: center;
+}
+
 
 /* Seccion del header que incluye el h1, el p, boton y la foto de la derecha */
 
 .header__container {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  margin: 0 10vw;
+  justify-content: space-between;
   color: var(--white);
 }
 .header__container-text {
@@ -95,7 +280,7 @@ body {
   cursor: pointer;
 }
 .header__container img {
-  width: 400px;
+  width: 300px;
 }
 
 main {
@@ -122,30 +307,42 @@ main {
 /* Cards recomendadas, renderizadas en el html  */
 .recommend__card {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
-
   border-radius: 15px;
   box-shadow: var(--boxShadow);
   background-color: var(--black);
   width: 350px;
-  height: 100px;
-
+  height: 110px;
+  padding: 15px;
   color: var(--white);
 }
-.recommend__card-h2 {
-  font-size: 15px;
+.recommend__card--text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+  width: 100%;
+  height: 100%;
+} 
+.recommend__card--h2 {
+  font-size: 14px;
 }
-.recommend__card-p {
-  font-size: 10px;
+.recommend__card--p {
+  font-size: 9px;
 }
 .recommend__card img {
   width: 70px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 .recommend__card-span {
   font-size: 17px;
+  width: min-content;
 }
+
 .prices {
   font-weight: 700;
   background: var(--gradient);
@@ -153,19 +350,21 @@ main {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-#addCart {
-  background: var(--gradient);
-  padding: 7px 10px;
-  border: none;
-  border-radius: 15px;
-  box-shadow: var(--boxShadow);
-  font-weight: 500;
-  color: var(--white);
-}
-#addCart:hover {
-  box-shadow: 0px 0px 10px 0px var(--white);
-  cursor: pointer;
-}
+/* Estilos de boton agregar */
+  .addButton {
+    background: var(--gradient);
+    padding: 8px 12px;
+    border: none;
+    font-size: 14px;
+    border-radius: 15px;
+    box-shadow: var(--boxShadow);
+    font-weight: 500;
+    color: var(--white);
+  }
+  .addButton:hover {
+    box-shadow: 0px 0px 10px 0px var(--white);
+    cursor: pointer;
+  }
 
 /* categorias de productos */
 .categories {
@@ -174,13 +373,12 @@ main {
   align-items: center;
   gap: 10px;
 }
-.categoria_h1{
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 800;
-  font-size: 15px;
+.categories_h2{
   padding: 0 50px;
-  color: white;
+  color: var(--white);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 2px;
 }
 
 .categories__card{
@@ -274,7 +472,7 @@ width: 55%;
   font-style: normal;
   font-weight: 500;
   font-size: 15px;
-  color: white;
+  color: var(--white);
   margin-bottom: 5px;
 }
 .subtitle_popularCard{
@@ -284,7 +482,7 @@ font-weight: 400;
 font-size: 13px;
 line-height: 17px;
 letter-spacing: 0.5px;
-color: #FFFFFF;
+color: var(--white);
 mix-blend-mode: normal;
 opacity: 0.3;
 margin-bottom: 5px;
@@ -311,14 +509,14 @@ background-clip: text;
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
-  color: white;
+  color: var(--white);
   border: none;
   cursor: pointer;
 }
 
 
-
 /* Mostrar producto de categorias */
+
 .mostrarProdCategorias{
   margin: 5rem 0;
   display: flex;
@@ -328,40 +526,46 @@ background-clip: text;
   
 }
 .categoria__productos__img{
-  width: 300px;
-  height: 220px;
-  border-radius: 2rem;
+  margin: 0 auto;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
 }
 .categoria__productos__nombre{
-  color: white;
+  color: var(--white);
 }
 .categoria__productos{
+  position: relative;
   width: 400px;
-  height: 400px;
+  height: 380px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 15px 0;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 15px;
   margin: 15px;
 
-
-  background-color: #252525;
+  background-color: var(--black);
   border-radius: 15px;
 }
 .categoria__productos__ingredientes{
-  width: 90%;
-  text-align: center;
-  color: white;
+  color: var(--white);
   opacity: 0.3;
-  font-size: 21px;
-  font-family: Montserrat;
+  font-size: 15px;
+  font-family: var(--font);
   font-weight: 400;
   margin-bottom: 5px;
 }
-.categoria__productos__precio{
-  background: linear-gradient(98.81deg, #FFA100 -0.82%, #FF005C 101.53%);
 
+.productos__container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.categoria__productos span {
+  font-size: 20px;
 }
 
 
@@ -382,9 +586,6 @@ background-clip: text;
 .fa-solid.fa-chevron-up:hover{
   transform: scale(1.2, 1.2);
 }
-
-
-
 
 /* Footer */
 footer {
@@ -415,3 +616,6 @@ footer {
   font-weight: 700;
 }
 
+.hidden {
+  display: none;
+}

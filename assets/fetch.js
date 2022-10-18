@@ -13,3 +13,12 @@ const requestAPI = async (categoria) => {
 
 requestAPI('undefined')
 
+/* Traigo un solo array con todos los objetos dentro, en vez de un array con array de objetos */
+const requestProducts = async () => {
+  const res = await fetch(baseURL);
+  const data = await res.json();
+  return data.flat();
+}
+
+
+
