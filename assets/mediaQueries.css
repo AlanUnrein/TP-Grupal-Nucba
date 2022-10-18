@@ -1,0 +1,12 @@
+
+/* TABLET/ 481px a 768px */
+@media (max-width: 768px) {
+   
+   .header__container {
+      margin: 30px 10vw;
+   }
+   .header__container img {
+      display: none;
+   }
+}
+/* MOBILE/ 320px a 480px */

@@ -40,23 +40,24 @@ const saveLocalStorage = async () => {
 }
 
 
-/* Funcion para renderizar la seccion de recomendados (tres elementos traidos aleatoriamente del array original) */
+/* Funcion para renderizar la seccion de recomendados */
 const recommendHTML =  (food) => {
     return `
-        <div class="recommend__card data-category="${food.categoria}" data-id="${food.id}"">
+        <div class="recommend__card" >
           <img src=${food.imagenes} alt="pizza" />
           <div class="recommend__card--text">
             <h2 class="recommend__card--h2">${food.nombre}</h2>
             <p class="recommend__card--p">${food.ingredientes.join(' - ')}</p>
             <span class="recommend__card-span prices">$${food.precio}</span>
           </div>
-          <button class="addButton">Agregar</button>
+          <button class="addButton" data-category="${food.categoria}" data-id="${food.id}">Agregar</button>
         </div>`
 }
+
 const renderRecommend = async () => {
     const fetchedFood = await requestProducts();
-
-    recommend.innerHTML = fetchedFood.map(food => recommendHTML(food)).join('')
+    const arrayRecommend = fetchedFood.sort(()=> Math.random() - 0.5).slice(0, 3)  /* Ordena el array de forma aleatoria y toma los primeros 3 */
+    recommend.innerHTML = arrayRecommend.map(food => recommendHTML(food)).join('')
 }
 
 
