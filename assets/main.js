@@ -146,7 +146,7 @@ const addProductCart = async e => {
 }
 
 const renderCreateHTMLCart= array => {
-    cart__ul.innerHTML = array.map(productos => createHTMLCart(productos))
+    cart__ul.innerHTML = array.map(productos => createHTMLCart(productos)).join('')
 }
 
 const createHTMLCart= array => {
@@ -157,7 +157,7 @@ const createHTMLCart= array => {
       <img class="cart__item--img" src="${imagenes}" alt="pizza" />
       <div class="cart__item--text">
         <h3 class="cart__item--h3">${nombre}</h3>
-        <p class="cart__item--p">Descripcion: ${ingredientes}</p>
+        <p class="cart__item--p">${ingredientes.join(' - ')}</p>
         <span class="cart__item--span prices">$ ${precio}</span>
       </div>
       <div class="count">
