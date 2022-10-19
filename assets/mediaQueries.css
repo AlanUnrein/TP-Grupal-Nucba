@@ -8,5 +8,16 @@
    .header__container img {
       display: none;
    }
+
+
+   /* Los mas populares section */
+   .recommend__h2{
+      text-align: center;
+   }
+
+   /* Footer */
+   .footer__list{
+      flex-direction: column;
+   }
 }
 /* MOBILE/ 320px a 480px */
