@@ -149,7 +149,8 @@ body {
   }
   .count__less {
     background: #2f1e01;
-  background: linear-gradient(95deg,#5f3c00 1%, #633f01 1%, #4d001d 98%);
+    background: linear-gradient(95deg,#5f3c00 1%, #633f01 1%, #4d001d 98%);
+  
   }  
 
 .cart__item--img {
