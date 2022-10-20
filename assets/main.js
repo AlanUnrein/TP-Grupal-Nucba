@@ -138,7 +138,7 @@ const createHTMLCart= array => {
       <img class="cart__item--img" src="${imagenes}" alt="pizza" />
       <div class="cart__item--text">
         <h3 class="cart__item--h3">${nombre}</h3>
-        <p class="cart__item--p">${ingredientes.join(' - ')}</p>
+        <p class="cart__item--p">${ingredientes}</p>
         <span class="cart__item--span prices">$ ${precio}</span>
       </div>
       <div class="count" >
@@ -218,16 +218,18 @@ const btnLess = (e) => {
             : cartProduct;
         })
     } 
+    
     if(cart.find(producto => {
         if(producto.quantity === 0){
             if(window.confirm('Desea eliminar producto?')){
                 removeProductFromCart(e);
-                return;
             } else {
                 producto.quantity=1;
             }
         }
+        cambiarPrecioCantidad()
     }))
+
     cambiarPrecioCantidad()
     renderCreateHTMLCart(cart)
 }
