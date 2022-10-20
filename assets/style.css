@@ -84,6 +84,9 @@ body {
   text-align: left;
 }
 .cart__ul {
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 300;
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -96,7 +99,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  gap: 10px;
   width: 350px;
   height: 100px;
   padding: 15px;
@@ -126,14 +129,15 @@ body {
 .cart__item--text {
   display: flex;
   flex-direction: column;
+  max-width: 150px;
   gap: 5px;
   color: var(--white);
 }
 .cart__item--h3 {
-  font-size: 15px;
+  font-size: 14px;
 }
 .cart__item--p {
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 100;
 }
 
@@ -155,6 +159,8 @@ body {
 
 .cart__item--img {
   width: 70px;
+  height: 70px;
+  border-radius: 10px;
   object-fit: cover;
 }
 /* box del subtotal y total */
@@ -202,11 +208,31 @@ body {
     width: 250px;
     height: 45px;
     border-radius: 15px;
+  }
+  .cart__deleteAll {
+    box-shadow: var(--boxShadow);
+    border: none;
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    margin: 0 auto;
+    width: 250px;
+    height: 45px;
+    border-radius: 15px;
   }  
   .cart__shop:hover {
       box-shadow: 0px 0px 10px 0px var(--white);
       cursor: pointer;
+      transition: all .3s;
     }
+  .cart__deleteAll:hover {
+      box-shadow: 0px 0px 10px 0px var(--white);
+      cursor: pointer;
+      transition: all .5s;
+    }
+
   .cart__p {
   text-align: center;
   font-size: 10px;
@@ -345,6 +371,7 @@ main {
 }
 
 .prices {
+  width: max-content;
   font-weight: 700;
   background: var(--gradient);
   background-clip: text;
@@ -365,6 +392,7 @@ main {
   .addButton:hover {
     box-shadow: 0px 0px 10px 0px var(--white);
     cursor: pointer;
+    transition: all .3s;
   }
 
 /* categorias de productos */
