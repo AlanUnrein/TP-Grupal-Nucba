@@ -3,14 +3,23 @@
 @media (max-width: 768px) {
    
    .header__container {
-      margin: 30px 10vw;
+      margin: 150px 10vw 0 10vw;
    }
    .header__container img {
       display: none;
    }
-
-
+   .nav {
+      margin: 0;
+      gap: 30px;
+   }
+   .nav__ul {
+      gap: 60px;
+   }
+   
    /* Los mas populares section */
+   .recommend {
+      margin: 20px auto;
+   }
    .recommend__h2{
       text-align: center;
    }
@@ -20,91 +29,67 @@
       flex-direction: column;
    }
    .categories{
-      overflow: hidden;
-      overflow-x: scroll;
       width: 90%;
-      margin: 0 auto;
-      padding: 1rem 0 1rem 7rem;
+      margin: 20px auto;
+   }
+   .categories_h2{
+      text-align: center;
+      margin: 4rem 0 1rem 0;
    }
 }
+
 /* MOBILE/ 320px a 480px */
-*{
-   padding: 0;
-   margin: 0;
-   box-sizing: border-box;
-}
+@media (max-width: 480px) {
 
-
-
-
-
-
-
-/* RESPONSIVE CELULARES */
-@media (max-width: 425px) {
-   /* NAV */
-   header{
-      width: 100%;
+   body {
+      overflow: hidden;
    }
-   .nav{
+   .nav {
+      padding: 20px;
+   }
+   .nav__ul {
+      margin: 0;
+      padding-right: 20px;
+   }
+   .nav__li:nth-child(1) {
+      display: none;
+   }
+   /* Header */
+   .header__h1 {
+      font-size: 30px;
+   }
+   .header__h1 span {
+      font-size: 30px;
+   }
+   .header__p {
+      font-size: 15px;
+   }
+
+   /* Cart container */
+   .cart__container {
+      width: 100%;
       display: flex;
-      justify-content: space-around;
+      flex-direction: column;
+   }
+   .cart__item {
       width: 100%;
-   }
-   .nav__logo img{
-      width: 65px;
-      margin-left: -6rem;
-   }
-   .nav__ul{
-      gap: 2rem;
       margin: 0;
    }
-   .nav__list{
-      width: 15px;
+
+
+   .cart__shop,
+   .cart__empty,
+   .disable {
+      max-width: 95%;
    }
-   #home i{
-      font-size: 17px;
+
+
+   /* SECTION RECOMENDACIONES */
+   .recommend {
+      width: 95%;
    }
-/* --------------------------------------------- */
-
-
-/* SECTION 1 (incluye: h1, p y la imagen de la derecha) */
-.pizza1{
-   display: none;
- }
- .pizza2{
-   display: none;
- }
-
- /* ------------------------------------------------------ */
-
-
- /* SECTION RECOMENDACIONES */
- .recommend__card{
-   margin: 0 1rem;
- }
- .addButton{
-   font-size: 10px;
- }
- .recommend__card-span{
-   font-size: 14px;
- }
- /* ----------------------------------------------------------- */
-
-
- /* SECTION CATEGORIAS */
-.categories_h2{
-   text-align: center;
-   margin: 4rem 0 1rem 0;
-}
-.categories{
-   overflow: hidden;
-   overflow-x: scroll;
-   width: 90%;
-   margin: 0 auto;
-   padding: 1rem 0 1rem 7rem;
-}
-.categories__card, .categories__card.vacia{
-width: 100%;
-}
-}
+   .recommend__card{
+      margin: 0 1rem;
+      height: 130px;
+   }
+   }

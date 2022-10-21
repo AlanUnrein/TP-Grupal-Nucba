@@ -3,17 +3,20 @@ const mostrarProdCategorias = document.querySelector('.mostrarProdCategorias');
 const recommend = document.querySelector('.recommend');
 
 //variables del carrito
-const cart__container = document.querySelector('.cart__container')
-const carrito = document.querySelector('.fa-solid.fa-cart-shopping')
+const cartContainer = document.querySelector('.cart__container')
+const carrito = document.querySelector('.cart__menu')
 const btnCerrarCarrito = document.querySelector('.cart__button')
 const addButton = document.querySelector('.addButton')
 const cart__ul = document.querySelector('.cart__ul')
 const cart__li = document.querySelector('.cart__li')
-const quantity = document.getElementById('quantity')
-const cart__subtotal = document.querySelector('.cart__subtotal')
-const cart__total = document.querySelector('.cart__total')
-const count__less = document.querySelector('.count__less cart__button')
-const count__more = document.querySelector('.count__more cart__button')
+const quantity = document.querySelector('.quantity')
+const cart__subtotal = document.querySelector('.cart__subtotal span')
+const cart__total = document.querySelector('.cart__total span')
+const count__less = document.querySelector('.count__less')
+const count__more = document.querySelector('.count__more')
+const shopBtn = document.querySelector('.cart__shop')
+const emptyBtn = document.querySelector('.cart__empty')
+
 
 
 
@@ -74,13 +77,6 @@ const mostrarCategorias= async (e)=> {
 }
 
 
-
-const saveLocalStorage = async () => {
-  const menu = await requestAPI();
-  localStorage.setItem("categorias", JSON.stringify(menu));
-}
-
-
 /* Funcion para renderizar la seccion de recomendados */
 const recommendHTML = (food) => {
     return `
@@ -103,50 +99,71 @@ const renderRecommend = async () => {
     recommend.innerHTML = arrayRecommend.map(food => recommendHTML(food)).join('')
 }
 
-//FUNCIONES DEL CARRITO
+//-----------------------FUNCIONES DEL CARRITO-----------------------
 
 //array donde se guardan los productos selecciondos
-let cart = []
+let cart = JSON.parse(localStorage.getItem('cart')) || []
 
-const mostrarCarrito = e => {
-  if(!e.target.classList.contains('fa-solid fa-cart-shopping')){
-    cart__container.classList.remove('hidden')
-    return;
-  } 
+// setear en el localstorage el los elementos del carrito
+const saveLocalStorage =  (cartList) => {
+    localStorage.setItem("cart", JSON.stringify(cartList));
+  }
+
+  
+const renderCart= () => {
+    if(!cart.length){
+        cart__ul.textContent= 'Aún no hay productos en la carta.'
+        return;
+    } 
+    cart__ul.innerHTML = cart.map(cartItem => createHTMLCart(cartItem)).join('');
 }
-const cerrarCarrito = e => {
-    if(e.target.classList.contains('cart__button')){
-            cart__container.classList.add('hidden')
-            return;
+
+/* ABRIR Y CERRAR CARRITO */
+    const toggleCarrito = () => {
+        cartContainer.classList.toggle("open__cart")
     }
-}
-const cambiarPrecioCantidad =()=> {
-    quantity.textContent = cart.reduce((acc, cur) => acc + cur.quantity ,0)
-    cart__total.textContent = cart.reduce((acc, cur) => acc + cur.precio * cur.quantity, 0);
-    cart__subtotal.textContent = cart.reduce((acc, cur) => acc + cur.precio * cur.quantity, 0);
-}
+    const cerrarCarrito = () => {
+        cartContainer.classList.toggle('open__cart')
+    }
+/* CERRAR CARRITO CON SCROLL*/    
+    const closeOnScroll = () => {
+        if (!cartContainer.classList.contains('open__cart')) return 
+        cartContainer.classList.remove('open__cart')
+    }
+ 
 
-const renderCreateHTMLCart= array => {
-    cart__ul.innerHTML = array.map(productos => createHTMLCart(productos)).join('')
+// Cantidad total y subtotal del carrito
+const cambiarPrecioCantidad =()=> {   
+    quantity.textContent = cart.reduce((acc, cur) => acc + cur.quantity ,0)
+    cart__total.innerHTML = `$${cart.reduce((acc, cur) => acc + cur.precio * cur.quantity, 0)}`;
+    cart__subtotal.textContent = `$${cart.reduce((acc, cur) => acc + cur.precio * cur.quantity, 0)}`;
 }
+// funcion desabilitar botones comprar y vaciar 
+const disableBtn = (btn) => {
+    if (!cart.length) {
+      btn.classList.add("disabled");
+    } else {
+      btn.classList.remove("disabled");
+    }
+  };
+
 
 const createHTMLCart= array => {
-     const {id,imagenes, ingredientes, nombre, precio, quantity} = array
+     const {id,imagenes, nombre, precio, quantity} = array
     return`
     <li class="cart__li">
-    <div class="cart__item">
-      <img class="cart__item--img" src="${imagenes}" alt="pizza" />
-      <div class="cart__item--text">
-        <h3 class="cart__item--h3">${nombre}</h3>
-        <p class="cart__item--p">${ingredientes}</p>
-        <span class="cart__item--span prices">$ ${precio}</span>
-      </div>
-      <div class="count" >
-        <button class="count__less cart__button" data-id="${id}">-</button>
-        <div class="count__counting">${quantity}</div> <!-- Cantidad actual de ese item -->
-        <button class="count__more cart__button" data-id="${id}">+</button>
-      </div>
-  </li>
+        <div class="cart__item">
+        <img class="cart__item--img" src="${imagenes}" alt="pizza" />
+        <div class="cart__item--text">
+            <h3 class="cart__item--h3">${nombre}</h3>
+            <span class="cart__item--span prices">$ ${precio}</span>
+        </div>
+        <div class="count" >
+            <button class="count__less cart__button" data-id="${id}">-</button>
+            <div class="count__counting">${quantity}</div> <!-- Cantidad actual de ese item -->
+            <button class="count__more cart__button" data-id="${id}">+</button>
+        </div>
+    </li>
     `
 }
 
@@ -163,15 +180,29 @@ const addProduct = array => {
     }
 }
 
+const checkQuantity = () => {
+    if (!cart.length) { 
+        quantity.classList.add('hidden')
+        return
+    } else if (cart.length) {
+        quantity.classList.remove('hidden')
+        return
+    }    
+}
+ 
+// CHEQUEAR ESTADO DEL CART
+const checkCartState = () => {
+    checkQuantity()
+    saveLocalStorage(cart);
+    renderCart(cart);
+    cambiarPrecioCantidad(cart)
+    disableBtn(emptyBtn)
+    disableBtn(shopBtn)
+}
+
 const addProductCart = async e => {
-    if(!e.target.classList.contains('addButton')){
-        if(!cart.length){
-            cart__ul.textContent= 'Aún no hay productos en la carta.'
-            quantity.classList.add('hidden')
-            return;
-        } 
-    return;
-    }
+    if(!e.target.classList.contains('addButton')) return;
+    
         const {id, nombre, precio, imagenes} = e.target.dataset;
         const producto = createProductData(id,nombre,precio,imagenes)
 
@@ -183,13 +214,12 @@ const addProductCart = async e => {
         } else {
             cart = [... cart,{ ... producto,quantity:1} ]
         }
-
-        cambiarPrecioCantidad();
-        renderCreateHTMLCart(cart);
-        quantity.classList.remove('hidden')
         
+        checkCartState()
 }
 
+
+// BOTON SUMAR CANTIDAD
 const btnMore = (e) => {
     if(!e.target.classList.contains('count__more')) return;
     const {id, nombre, precio, imagenes} = e.target.dataset;
@@ -201,11 +231,10 @@ const btnMore = (e) => {
             : cartProduct;
         })
     }
-    
     cambiarPrecioCantidad()
-    renderCreateHTMLCart(cart)
+    renderCart(cart)
 }
-
+// BOTON RESTAR CANTIDAD
 const btnLess = (e) => {
     if(!e.target.classList.contains('count__less')) return;
     const {id, nombre, precio, imagenes} = e.target.dataset;
@@ -218,7 +247,6 @@ const btnLess = (e) => {
             : cartProduct;
         })
     } 
-    
     if(cart.find(producto => {
         if(producto.quantity === 0){
             if(window.confirm('Desea eliminar producto?')){
@@ -229,9 +257,8 @@ const btnLess = (e) => {
         }
         cambiarPrecioCantidad()
     }))
-
     cambiarPrecioCantidad()
-    renderCreateHTMLCart(cart)
+    checkCartState()
 }
 
 const removeProductFromCart = (e) => {
@@ -239,17 +266,43 @@ const removeProductFromCart = (e) => {
     cart = cart.filter((product) => product.id !== valorID);
   };
 
+const resetCart = () => {
+    cart = [];
+    checkCartState();
+}
+
+// MENSAJES DE CONFIRMACION PARA BOTONES DEL CARRITO 
+  const confirmCartAction = (confirmMsg, successMsg) => {
+    if (!cart.length) return;
+    if (window.confirm(confirmMsg)) {
+      resetCart();
+      alert(successMsg);
+      cartContainer.classList.remove('open__cart')
+    }
+    };
+    const confirmEmpty = () => {
+        confirmCartAction('¿Deseas vaciar los elementos del carrito?', 'El carrito se ha vaciado');
+    }
+    const confirmShop = () => {
+        confirmCartAction('¿Deseas completar tu compra?', 'Gracias por tu compra')
+    }
+
 const init = () => {
     renderRecommend();
-    saveLocalStorage();
-
+    
     //eventos del carrito
-    carrito.addEventListener('click', mostrarCarrito)
-    btnCerrarCarrito.addEventListener('click',cerrarCarrito)
+    checkQuantity()
+    window.addEventListener('scroll', closeOnScroll)
+    carrito.addEventListener('click', toggleCarrito)
+    btnCerrarCarrito.addEventListener('click', cerrarCarrito)
     document.addEventListener('click', addProductCart)
     document.addEventListener('click', btnMore)
     document.addEventListener('click', btnLess)
-
+    document.addEventListener("DOMContentLoaded", renderCart);
+    document.addEventListener("DOMContentLoaded", cambiarPrecioCantidad);
+    shopBtn.addEventListener('click', confirmShop)
+    emptyBtn.addEventListener('click', confirmEmpty)
+    
     for (let i = 0; i < categories_card.length; i++) {
     categories_card[i].addEventListener('click', mostrarCategorias)   
 }

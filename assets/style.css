@@ -19,25 +19,37 @@
   text-decoration: none;
   list-style: none;
   font-weight: 500;
+  scroll-behavior: smooth;
 }
 a {
   text-decoration: none;
   color: var(--white);
 }
-
+/* Sin aplicar en ambos no funciona en MOBILE */
+body, html {
+overflow-x: hidden;
+}
 body {
-  position: relative;
   background-color: var(--background);
 }
 .nav {
-  position: relative;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
   height: 120px;
+  padding: 0 50px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--background);
+}
+.nav__list {
+  display: flex;
 }
 .nav__logo {
-  margin-left: 60px;
+  margin-left: 30px;
 }
 .nav__img {
   width: 100px;
@@ -62,26 +74,38 @@ body {
 /* Menu de cart shop */
 
 .cart__container {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
 
+  height: 100vh;
+  width: 400px;
   backdrop-filter: blur(8px);
   background-color: #252525cb;
-  width: 400px;
   border-radius: 15px;
   border: 1px solid var(--background) ;
   padding: 20px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 35px;
+  z-index: 150;
+  transform: translateX(200%);
+  transition: all 0.5s cubic-bezier(0.92, 0.01, 0.35, 0.99);
+  
+}
+.open__cart {
+  overflow-y: scroll;
+  transform: translateX(0%);
+  transition: all 0.5s cubic-bezier(0.92, 0.01, 0.35, 0.99);
 }
 .cart__h2 {
   color: var(--white);
   font-size: 18px;
   font-weight: 500;
   text-align: left;
+  padding: 50px 0 20px 0;
 }
 .cart__ul {
   color: var(--white);
@@ -165,7 +189,7 @@ body {
 }
 /* box del subtotal y total */
   .cart__values {
-    margin-top: 50px;
+    margin-top: 30px;
     color: var(--white);
     font-size: 12px;
     letter-spacing: 1px;
@@ -198,6 +222,13 @@ body {
     right: 0;
     color: var(--yellow);
   }
+
+  .cart__buttons {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 15px;
+  }
   .cart__shop {
     background: var(--gradient);
     box-shadow: var(--boxShadow);
@@ -206,10 +237,13 @@ body {
     font-weight: 700;
     margin: 0 auto;
     width: 250px;
-    height: 45px;
+    padding: 10px 0;
     border-radius: 15px;
+    cursor: pointer;
   }
-  .cart__deleteAll {
+
+  
+  .cart__empty {
     box-shadow: var(--boxShadow);
     border: none;
     background: var(--gradient);
@@ -219,46 +253,51 @@ body {
     font-weight: 700;
     margin: 0 auto;
     width: 250px;
-    height: 45px;
+    padding: 10px 0;
     border-radius: 15px;
+    cursor: pointer;
   }  
-  .cart__shop:hover {
-      box-shadow: 0px 0px 10px 0px var(--white);
-      cursor: pointer;
-      transition: all .3s;
-    }
-  .cart__deleteAll:hover {
-      box-shadow: 0px 0px 10px 0px var(--white);
-      cursor: pointer;
-      transition: all .5s;
-    }
-
+  
   .cart__p {
   text-align: center;
   font-size: 10px;
-  margin-top: -25px;
-  margin-bottom: 20px;
+  padding-bottom: 15px;
 }
 .cart__p a {
   font-weight: 100;
 }
-
-
 #cart {
   font-size: 20px;
   color: var(--yellow);
+  cursor: pointer;
 }
-#quantity {
+.quantity {
   position: absolute;
   color: var(--white);
   top: -10px;
+  right: -10px;
   font-size: 13px;
   background-color: var(--red);
   border: 1px solid var(--white);
   
-  padding: 0 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 3px;
   border-radius: 50%;
-  text-align: center;
+}
+.nav__li i:hover {
+  transition: all .3s;
+  transform: scale(1.3);
+  color: var(--white);
+  
+}
+#cart:hover {
+  transform: scale(1.3);
+  transition: all .3s;
+  color: var(--white);
 }
 
 
@@ -268,6 +307,7 @@ body {
   display: flex;
   align-items: center;
   margin: 0 10vw;
+  margin-top: 120px;
   justify-content: space-between;
   color: var(--white);
 }
@@ -398,6 +438,7 @@ main {
 /* categorias de productos */
 .categories {
   display: flex;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -422,8 +463,8 @@ main {
   border-radius: 15px;
   box-shadow: var(--boxShadow);
   background-color: var(--black);
-  width: 147px;
-  height: 171px;
+  width: 125px;
+  height: 170px;
 
   font-size: 15px;
   color: var(--white);
@@ -533,29 +574,30 @@ margin-bottom: 5px;
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: 20px;
 }
 .categoria__productos__nombre{
   color: var(--white);
+  font-size: 20px;
 }
 .categoria__productos{
   position: relative;
   width: 400px;
-  height: 380px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 10px;
-  padding: 15px;
+  gap: 5px;
+  padding: 25px;
   margin: 15px;
 
   background-color: var(--black);
-  border-radius: 15px;
+  border-radius: 20px;
 }
 .categoria__productos__ingredientes{
   color: var(--white);
   opacity: 0.3;
-  font-size: 15px;
+  font-size: 16px;
   font-family: var(--font);
   font-weight: 400;
   margin-bottom: 5px;
@@ -619,6 +661,16 @@ footer {
   font-weight: 700;
 }
 
+
 .hidden {
   display: none;
 }
+
+/* boton desabilitado */
+.disabled {
+  -webkit-text-fill-color: var(--background);
+  background: gray;
+  cursor: not-allowed;
+  padding: 10px 0;
+}
+

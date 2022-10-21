@@ -20,94 +20,66 @@
         <div class="nav__list">
           <ul class="nav__ul">
             <li class="nav__li">
-              <a href="#home" class="nav__link home">
+              <a href="#" class="nav__link home">
                 <i class="fa-solid fa-house"></i>
               </a>
-            </li>
-            <li class="nav__li">
-                <i id="cart" class="fa-solid fa-cart-shopping"></i>
-                <span id="quantity" class="hidden"></span> <!-- Cantidad de elementos en el cart -->
             </li>
             <li class="nav__li">
               <a href="#" class="nav__link user">
                 <i class="fa-solid fa-user"></i>
               </a>
             </li>
+            <li class="nav__li cart__menu">
+              <i id="cart" class="fa-solid fa-cart-shopping"></i>
+              <span class="quantity"></span> <!-- Cantidad de elementos en el cart -->
+            </li>
           </ul>
         </div> 
       </nav>
+
       <!-- Menu del carrito de compras --> 
-      <div class="cart__container hidden">  
-        <div class="cart__button">x</div>
-        <h2 class="cart__h2">Tus Productos</h2>
-        <ul class="cart__ul"> <!-- Aca la lista de elementos en el cart -->
-
-
-        </ul>
+      <div class="cart__container">  
+        <div class="cart__header">
+          <div class="cart__button">x</div>
+          <h2 class="cart__h2">Tus Productos</h2>
+        </div>
+        <ul class="cart__ul"> <!--Aca la lista de elementos en el cart--></ul>
         <div class="cart__values">
-          <h4 class="cart__subtotal">Subtotal: <span></span><!-- aca el precio subtotal --></h4>
+          <h4 class="cart__subtotal">Subtotal: <span></span><!--precio subtotal--></h4>
           <h4 class="cart__envio">Envio: <span>Gratis</span></h4>
-          <h4 class="cart__total">Total: <span></span></h4>
+          <h4 class="cart__total">Total: <span class="prices"></span></h4>
         </div>
-        <button class="cart__shop">COMPRAR</button>
-        <button class="cart__deleteAll">VACIAR CARRITO </button>
-        <p class="cart__p"><a href="#">Ver mas productos</a></p>
-        </div>
-
+        <div class="cart__buttons">
+          <button class="cart__shop">COMPRAR</button>
+          <button class="cart__empty">VACIAR CARRITO </button>
+          <p class="cart__p"><a href="#">Ver mas productos</a></p>
+        </div>  
       </div>
+
+      <!--  HEADER  -->
       <div class="header__container">
         <div class="header__container-text">
           <h1 class="header__h1">Si tenes Zappi, <span>tenes Nucba.</span></h1>
           <p class="header__p">
             Busca lo que quieras y nucba te quedes sin comida.
           </p>
-          <button class="header__button">Ver mas</button>
+          <button class="header__button"><a href="#populares">Ver mas</a> </button>
         </div>
         <img src="./assets/img/pizza.png" alt="pizza" />
       </div>
     </header>
+
+    <!-- MAIN -->
     <main>
       <h2 class="recommend__h2">Hoy te recomendamos...</h2>
-      <section class="recommend">
-        <!-- Aca podemos poner una lista de x cantidad, aleatorios -->
-
-        <!-- <div class="recommend__card">
-          <img src="./assets/img/pizza.png" alt="pizza" />
-          <div class="recommend__card--text">
-            <h2 class="recommend__card--h2">Nombre</h2>
-            <p class="recommend__card--p">Descipcion</p>
-            <span class="recommend__card-span prices">precio</span>
-          </div>
-          <button class="addButton">Agregar</button>
-        </div>
-
-        <div class="recommend__card">
-          <img src="./assets/img/pizza.png" alt="pizza" />
-          <div class="recommend__card--text">
-            <h2 class="recommend__card--h2">Nombre</h2>
-            <p class="recommend__card--p">Descipcion</p>
-            <span class="recommend__card-span prices">precio</span>
-          </div>
-          <button class="addButton">Agregar</button>
-        </div>
-
-        <div class="recommend__card">
-          <img src="./assets/img/pizza.png" alt="pizza" />
-          <div class="recommend__card--text">
-            <h2 class="recommend__card--h2">Nombre</h2>
-            <p class="recommend__card--p">Descipcion</p>
-            <span class="recommend__card-span prices">precio</span>
-          </div>
-          <button class="addButton">Agregar</button>
-        </div> -->
-        
-      </section>
+      <section class="recommend"></section>
+      
       <h2 class="categories_h2">Categorías</h2>
       <section class="categories">
         <!-- Aca las categorias, donde aparentemente solo vamos a mostrar las pizzas -->
         <div class="categories__card vacia" tabindex="1">
-          <img src="./assets/img/pizza 1.png" alt="populares" class="img__card vacia"/>
-          <span class="vacia">Populares</span>
+          <img src="./assets/img/pizza 1.png" alt="individuales" class="img__card vacia"/>
+          <span class="vacia">Individuales</span>
           <hr class="card__hr vacia"/>
         </div>
         <div class="categories__card" data-id="pizzas" tabindex="2">
@@ -144,9 +116,9 @@
       <ul class="mostrarProdCategorias"></ul>
       <span id="arrowCategorias"><i class="fa-solid fa-chevron-up" onclick='hiddenCategorias()'></i></span>
 
-      <h2 class="recommend__h2">Los más populares</h2>
+      <h2 class="recommend__h2" id="populares">Los más populares</h2>
+      <section class="popular" >
       <!-- Section de categoria popular -->
-      <section class="popular">
         <div class="popular_card">
           <img class="img_cardPopular"  src="./assets/img/Photo Menu.png" alt="foto de pizza">
           <div class="text_cardPopular">
