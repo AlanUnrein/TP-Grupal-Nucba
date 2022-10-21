@@ -16,6 +16,7 @@ const count__less = document.querySelector('.count__less')
 const count__more = document.querySelector('.count__more')
 const shopBtn = document.querySelector('.cart__shop')
 const emptyBtn = document.querySelector('.cart__empty')
+const modal = document.querySelector('.modal')
 
 
 
@@ -130,8 +131,6 @@ const renderCart= () => {
         if (!cartContainer.classList.contains('open__cart')) return 
         cartContainer.classList.remove('open__cart')
     }
- 
-
 // Cantidad total y subtotal del carrito
 const cambiarPrecioCantidad =()=> {   
     quantity.textContent = cart.reduce((acc, cur) => acc + cur.quantity ,0)
@@ -146,6 +145,16 @@ const disableBtn = (btn) => {
       btn.classList.remove("disabled");
     }
   };
+  
+// FUNCION PARA MODAL 
+const activeModal = (mensaje) => {
+    modal.classList.add('active__modal')
+    modal.textContent = mensaje
+    setTimeout(()=> {
+        modal.classList.remove('active__modal')
+    }, 2000)
+}
+
 
 
 const createHTMLCart= array => {
@@ -180,6 +189,7 @@ const addProduct = array => {
     }
 }
 
+/* CHEQUEAR CANTIDAD DEL ICONO CART */
 const checkQuantity = () => {
     if (!cart.length) { 
         quantity.classList.add('hidden')
@@ -200,7 +210,7 @@ const checkCartState = () => {
     disableBtn(shopBtn)
 }
 
-const addProductCart = async e => {
+const addProductCart = (e) => {
     if(!e.target.classList.contains('addButton')) return;
     
         const {id, nombre, precio, imagenes} = e.target.dataset;
@@ -214,7 +224,7 @@ const addProductCart = async e => {
         } else {
             cart = [... cart,{ ... producto,quantity:1} ]
         }
-        
+        activeModal('Se agrego un elemento al carrito')
         checkCartState()
 }
 
@@ -222,6 +232,7 @@ const addProductCart = async e => {
 // BOTON SUMAR CANTIDAD
 const btnMore = (e) => {
     if(!e.target.classList.contains('count__more')) return;
+
     const {id, nombre, precio, imagenes} = e.target.dataset;
     const producto = createProductData(id,nombre,precio,imagenes)
 
@@ -229,9 +240,10 @@ const btnMore = (e) => {
         cart = cart.map(cartProduct => {
             return cartProduct.id === producto.id ? {... cartProduct, quantity: cartProduct.quantity+1} 
             : cartProduct;
-        })
+    })
     }
     cambiarPrecioCantidad()
+    activeModal('Se agrego una unidad al carrito')
     renderCart(cart)
 }
 // BOTON RESTAR CANTIDAD
