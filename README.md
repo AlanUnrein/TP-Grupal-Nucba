@@ -2,6 +2,6 @@
 
 Integrantes:
 Alan Unrein.
-Jorge Capai
-Facundo Ibañez Gambarte
-Ignacio Guevara
+Jorge Capai.
+Facundo Ibañez Gambarte.
+Ignacio Guevara.
