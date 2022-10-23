@@ -2,3 +2,4 @@
 
 Integrantes:
 Alan Unrein.
+Jorge Capai
